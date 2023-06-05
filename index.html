@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <header>
+        <div class="tools"></div>
+        <h1>My Task Board</h1>
+    </header>
+    <main class="mainContainer">  
+        <div class="formDiv">
+            <form onsubmit="createNote()" class="form">
+                <label>Enter Task</label>
+                <textarea id="taskTextBox" cols="35" rows="6"></textarea>
+                <label>Date</label>
+                <input type="date" id="dateInputBox">
+                <label>Hour</label>
+                <input type="time" id="timeInputBox"> 
+                <hr>
+                <button type="submit">Add Task</button>
+                <button type="reset" onclick="clearForm()">Reset</button>
+            </form>
+        </div>
+        <div id="allNotesContainer" class="notesContainer"><!--Note Container--></div>
+        <div id="alertBoxContainer">
+            <!-- <p>This item will be permanently deleted.
+            <br>do you want to continue?</p>
+            <button id="confirmBtn" onclick="deleteAlert(true)">Yes</button>
+            <button id="cancelBtn" onclick="deleteAlert(false)">Cancel</button> -->
+        </div>
+    </main>
+    <footer></footer>
+</body>
+</html>

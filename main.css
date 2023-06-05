@@ -1,0 +1,99 @@
+body{
+    margin: 0;
+    background-color: lightsalmon;
+    background-image: url("assets/images/tileBG1.jpg");
+    background-repeat: repeat;
+}
+header{
+    text-align: center;
+    background-color: rgb(196, 241, 255);
+}
+h1{
+    margin: 0;
+}
+.tools{
+    height: 10px;
+    padding: 10px 20px;
+    background-color: bisque;
+}
+.mainContainer{
+    max-width: 100%;
+}
+
+/* === Form === */
+.formDiv{
+    width: 320px;
+    padding: 20px;
+    margin: auto;
+    background-color: azure;
+}
+textarea{
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* === Note === */
+.notesContainer{
+    display: flex;
+    padding-top: 50px;
+}
+.noteItem{
+    background-image: url("assets/images/paper.png");
+    background-repeat: no-repeat;
+    width: 230px;
+    height: 330px;
+    margin: 10px;
+    padding: 7px 15px;
+    font-size: 16px;
+    position:relative;
+}
+.noteItem .noteTools{
+    height: 24px;
+    text-align: right;
+    margin: 10px 0px 5px 0px;
+}
+.deleteBtn{
+    display:none;
+}
+.noteItem:hover .deleteBtn{
+    display: inline;
+}
+.noteContent{
+    width: 200px;
+    height: 240px; 
+    /* border-radius: 15px;  */
+    padding-right: 10px;
+    padding-left: 20px;
+    overflow-y: auto;
+}
+.contentFade{
+    background-image: url("assets/images/fade.png");
+    width: 85%;
+    height: 88px;
+    position: absolute;
+    bottom: 55px;
+    left:16px;
+
+}
+.noteDateAndTime{
+    padding-left: 10px;
+}
+.noteDateAndTime span:nth-child(2){
+    margin-left: 20px;
+    color: red;
+}
+
+/* scroll */
+.noteContent::-webkit-scrollbar{
+    width: 10px;
+}
+.noteContent::-webkit-scrollbar-track {
+    margin: 7px 0;
+}
+.noteContent::-webkit-scrollbar-thumb {
+    background: rgba(121, 119, 119, 0.2); 
+    border-radius: 8px;
+}
+.noteContent::-webkit-scrollbar-thumb:hover {
+    background: #797777; 
+  }
