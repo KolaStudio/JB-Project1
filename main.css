@@ -1,25 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
+
 body{
     margin: 0;
-    background-color: #400d00;
-    background-image: url("assets/images/tileBG2.png");
+    padding: 0;
+    background-color: #ef5252;
+    background-image: url("assets/images/tileBG.png");
     background-repeat: repeat;
     overflow-x:hidden;
 }
 header{
     text-align: center;
-    background-color: rgb(196, 241, 255);
-    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.7))
-}
-h1{
-    margin: 0;
-}
-.tools{
-    height: 10px;
+    height: 70px;
     padding: 10px 20px;
-    background-color: bisque;
+    background-color: #1a0500;
+    color: rgba(255, 255, 255, 0.8);
+    border-bottom: solid 2px rgba(255, 255, 255, 0.744);
+    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.7));
+    position: fixed;
+    width: 100%;
+    z-index: 5000;
 }
 .mainContainer{
     max-width: 100%;
+}
+
+/* === Title === */
+.title{
+    margin: 0 auto;
+    width: 830px;
+}
+h1{
+    margin: 0px;
+    position: absolute;
+    font-size: 90px;
+    font-family: 'Niconne', cursive;
+}
+.titleFront{
+    color: #ef5252;
+    text-shadow: 2px 2px 0px #ffffff,
+                -2px -2px 0px #ffffff,
+                -2px 2px 0px #ffffff;
+}
+.titleBack{
+    -webkit-text-stroke: 5PX #ffffff;
+    text-shadow:4px 4px 0px #3490f4,
+                -4px -4px 0px #3490f4,
+                -4px 4px 0px #3490f4,
+                7px 7px 0px #00519b,
+                -7px -7px 0px #00519b,
+                -7px 7px 0px #00519b,
+                7px 10px 10px #000000; 
+}
+.addNote_Btn{
+    float: right;
+    width: 234px;
+    height: 70px;
+    margin-top: 25px;
+    background-image: url("assets/images/addNoteBtn_off.png");
+    filter: drop-shadow(0px 10px 7px rgba(0, 0, 0, 0.7));
+}
+.addNote_Btn:hover{
+    cursor: pointer;
+    background-image: url("assets/images/addNoteBtn_on.png");
 }
 
 /* === Form === */
@@ -27,8 +69,9 @@ h1{
     width: 320px;
     padding: 20px;
     margin: auto;
-    background-color: azure;
+    align-items: center;
 }
+/* -- */
 textarea{
     display: block;
     margin-bottom: 20px;
@@ -36,13 +79,13 @@ textarea{
 
 /* === Note === */
 .notesContainer{
-    padding-top: 50px;
+    padding: 180px 7% 0 7%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
 }
 .noteItem{
-    background-image: url("assets/images/paper.png");
+    background-image: url("assets/images/paper1.png");
     background-repeat: no-repeat;
     width: 230px;
     height: 330px;
@@ -50,6 +93,7 @@ textarea{
     padding: 5px 15px;
     font-size: 18px;
     position:relative;
+    filter: drop-shadow(10px 10px 5px #00000050);
 }
 .noteItem .noteTools{
     height: 24px;
@@ -84,7 +128,6 @@ textarea{
     position: absolute;
     bottom: 55px;
     left:14px;
-
 }
 .noteDateAndTime{
     padding-left: 10px;

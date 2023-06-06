@@ -6,8 +6,13 @@ let recycleArr = [];
 const taskTextBox = document.getElementById("taskTextBox");
 const dateInputBox = document.getElementById("dateInputBox");
 const timeInputBox = document.getElementById("timeInputBox");
+const form = document.getElementById("form");
 
 loadFromLocalStorage();
+
+function showForm(){
+
+}
 
 function createNote(){
     event.preventDefault();

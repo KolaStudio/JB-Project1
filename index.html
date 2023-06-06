@@ -9,15 +9,21 @@
 </head>
 <body>
     <header>
-        <div class="tools"></div>
-        <h1>My Task Board</h1>
+        <div class="tools">
+           
+        </div>
+        
+        <div class="title">
+            <div class="addNote_Btn" onclick="showForm()"></div>
+            <h1 class="titleBack">My Task Board</h1>
+            <h1 class="titleFront">My Task Board</h1>
+        </div>
     </header>
-    <main class="mainContainer">  
+    <main class="mainContainer"> 
         <div class="formDiv">
-            <form onsubmit="createNote()" class="form">
-                <input type="color" id="head" name="head"
-                value="#e66465">
-         <label for="head">Head</label>
+            <form onsubmit="createNote()" id="form" style="display: none;">
+                <input type="color" id="head" name="head" value="#e66465">
+                <label for="head">Head</label>
                 <label>Enter Task</label>
                 <textarea id="taskTextBox" cols="35" rows="6"></textarea>
                 <label>Date</label>
