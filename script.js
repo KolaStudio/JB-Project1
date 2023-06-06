@@ -1,5 +1,7 @@
-const storageKey = "Kola-Note";
+const NOTES_StorageKey = "Kola-Note";
+const RECYCLE_StorageKey = "Kola-Recycle";
 let notesArr = [];
+let recycleArr = [];
 
 const taskTextBox = document.getElementById("taskTextBox");
 const dateInputBox = document.getElementById("dateInputBox");
@@ -8,10 +10,12 @@ const timeInputBox = document.getElementById("timeInputBox");
 loadFromLocalStorage();
 
 function createNote(){
+    event.preventDefault();
     const note = {
         task: taskTextBox.value,
         date: dateInputBox.value,
         time: timeInputBox.value,
+        create: new Date(),
         visual: {
             rotate: (Math.random() * (5 + 5)) -5,
             scotch: Math.floor(Math.random() * 5)+1,
@@ -25,12 +29,15 @@ function createNote(){
 }
 
 function saveToLocalStorage(){
-    const str = JSON.stringify(notesArr);
-    localStorage.setItem(storageKey, str);
+    const str1 = JSON.stringify(notesArr);
+    localStorage.setItem(NOTES_StorageKey, str1);
+
+    const str2 = JSON.stringify(recycleArr);
+    localStorage.setItem(RECYCLE_StorageKey, str2);
 }
 
 function loadFromLocalStorage(){
-    const str = localStorage.getItem(storageKey);
+    const str = localStorage.getItem(NOTES_StorageKey);
     if(str){
         notesArr = JSON.parse(str);
         displayNotes();
@@ -46,7 +53,7 @@ function displayNotes(){
         <div class="noteItem" style="rotate: ${notesArr[i].visual["rotate"]}deg;">
             <img class="scotch" src="assets/images/s${notesArr[i].visual["scotch"]}.png" style="margin-left:${notesArr[i].visual["scotchPos"]}px" alt="#">
             <div class="noteTools">
-                <button id="delete_${i}" class="deleteBtn" onclick="showDeleteAlert(${i})">X</button>
+                <button id="delete_${i}" class="deleteBtn" onclick="deleteNote(${i})">X</button>
             </div>
             <div class="noteContent"><div>${notesArr[i].task}</div><span class="contentFade"></span></div>
             <div class="noteDateAndTime"><span>${notesArr[i].date}</span> <span>${notesArr[i].time}</span></div>
@@ -60,28 +67,11 @@ function editNote(noteID){
     //Open popup form
 }
 
-function deleteNote(booleanResult, noteID){
-    const alertBoxContainer = document.getElementById("alertBox");
-    alertBoxContainer.remove();
-
-    if(booleanResult){
-        notesArr.splice(noteID, 1);
-        saveToLocalStorage();
-        displayNotes();
-    }
-}
-
-function showDeleteAlert(noteID){
-    const alertBoxContainer = document.getElementById("alertBoxContainer");
-    let html = `
-        <div id="alertBox">
-            <p>This item will be permanently deleted.
-            <br>do you want to continue?</p>
-            <button id="confirmBtn" onclick="deleteNote(${true}, ${noteID})">Yes</button>
-            <button id="cancelBtn" onclick="deleteNote(${false}, ${noteID})">Cancel</button>
-        </div>
-    `
-    alertBoxContainer.innerHTML = html;
+function deleteNote(noteID){
+    recycleArr.push(notesArr[noteID]);
+    notesArr.splice(noteID, 1);
+    saveToLocalStorage();
+    displayNotes();
 }
 
 function clearForm(){

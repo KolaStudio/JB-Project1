@@ -1,8 +1,9 @@
 body{
     margin: 0;
-    background-color: #ecda8b;
-    background-image: url("assets/images/tileBG1.png");
+    background-color: #400d00;
+    background-image: url("assets/images/tileBG2.png");
     background-repeat: repeat;
+    overflow-x:hidden;
 }
 header{
     text-align: center;
@@ -36,7 +37,6 @@ textarea{
 /* === Note === */
 .notesContainer{
     padding-top: 50px;
-    width: 125%;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -46,11 +46,10 @@ textarea{
     background-repeat: no-repeat;
     width: 230px;
     height: 330px;
-    margin: 10px;
+    margin: 10px 15px;
     padding: 5px 15px;
     font-size: 18px;
     position:relative;
-    /* float: left; */
 }
 .noteItem .noteTools{
     height: 24px;
@@ -70,7 +69,6 @@ textarea{
 .noteContent{
     width: 200px;
     height: 240px; 
-    /* border-radius: 15px;  */
     padding-right: 10px;
     padding-left: 20px;
     overflow-y: auto;
