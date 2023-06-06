@@ -11,7 +11,12 @@ function createNote(){
     const note = {
         task: taskTextBox.value,
         date: dateInputBox.value,
-        time: timeInputBox.value
+        time: timeInputBox.value,
+        visual: {
+            rotate: (Math.random() * (5 + 5)) -5,
+            scotch: Math.floor(Math.random() * 5)+1,
+            scotchPos: Math.floor(Math.random() * (140 - 50)) + 50
+        }
     }
     notesArr.push(note);
     saveToLocalStorage();
@@ -38,11 +43,12 @@ function displayNotes(){
 
     for(let i=0; i<notesArr.length; i++){
         html += `
-        <div class="noteItem">
+        <div class="noteItem" style="rotate: ${notesArr[i].visual["rotate"]}deg;">
+            <img class="scotch" src="assets/images/s${notesArr[i].visual["scotch"]}.png" style="margin-left:${notesArr[i].visual["scotchPos"]}px" alt="#">
             <div class="noteTools">
                 <button id="delete_${i}" class="deleteBtn" onclick="showDeleteAlert(${i})">X</button>
             </div>
-            <div class="noteContent">${notesArr[i].task}<span class="contentFade"></span></div>
+            <div class="noteContent"><div>${notesArr[i].task}</div><span class="contentFade"></span></div>
             <div class="noteDateAndTime"><span>${notesArr[i].date}</span> <span>${notesArr[i].time}</span></div>
         </div>
         `;

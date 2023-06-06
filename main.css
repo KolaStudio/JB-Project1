@@ -1,12 +1,13 @@
 body{
     margin: 0;
-    background-color: lightsalmon;
-    background-image: url("assets/images/tileBG1.jpg");
+    background-color: #ecda8b;
+    background-image: url("assets/images/tileBG1.png");
     background-repeat: repeat;
 }
 header{
     text-align: center;
     background-color: rgb(196, 241, 255);
+    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.7))
 }
 h1{
     margin: 0;
@@ -34,8 +35,11 @@ textarea{
 
 /* === Note === */
 .notesContainer{
-    display: flex;
     padding-top: 50px;
+    width: 125%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 .noteItem{
     background-image: url("assets/images/paper.png");
@@ -43,9 +47,10 @@ textarea{
     width: 230px;
     height: 330px;
     margin: 10px;
-    padding: 7px 15px;
-    font-size: 16px;
+    padding: 5px 15px;
+    font-size: 18px;
     position:relative;
+    /* float: left; */
 }
 .noteItem .noteTools{
     height: 24px;
@@ -58,6 +63,10 @@ textarea{
 .noteItem:hover .deleteBtn{
     display: inline;
 }
+.scotch{
+    position: absolute;
+    top: -20px;
+}
 .noteContent{
     width: 200px;
     height: 240px; 
@@ -66,13 +75,17 @@ textarea{
     padding-left: 20px;
     overflow-y: auto;
 }
+.noteContent div{
+    display: block;
+    padding-bottom: 60px;
+}
 .contentFade{
     background-image: url("assets/images/fade.png");
     width: 85%;
     height: 88px;
     position: absolute;
     bottom: 55px;
-    left:16px;
+    left:14px;
 
 }
 .noteDateAndTime{
