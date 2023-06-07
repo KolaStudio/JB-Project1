@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
+:root {
+    /* --blue: #3490f4;
+    --main: #ef5252; */
+    --blue: #13375e;
+    --title: #fd1e1e;
+    --main: #bc0000;
+    --pattern: url("assets/images/tileBG2.png");
+  }
 
 html, body{
     margin: 0;
@@ -7,22 +16,11 @@ html, body{
 }
 body{
     box-sizing: border-box;
-    background-color: #ef5252;
-    background-image: url("assets/images/tileBG.png");
+    background-color: var(--main);
+    background-image: var(--pattern);
     background-repeat: repeat;
     overflow: hidden;
-}
-header{
-    text-align: center;
-    height: 70px;
-    padding: 10px 20px;
-    background-color: #1a0500;
-    border-bottom: solid 2px rgba(255, 255, 255, 0.744);
-    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.7));
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 5000;
+    font-family: 'Comic Neue', cursive;
 }
 .mainContainer{
     box-sizing: border-box;
@@ -30,74 +28,120 @@ header{
     height: calc(100% - 120px);
     margin: 90px 0 30px 0;
     overflow-y: auto;
-    background-color: #797777;
+}
+    .mainContainer::-webkit-scrollbar{
+        width: 15px;
+    }
+    .mainContainer::-webkit-scrollbar-track {
+        margin: 10px 0;
+    }
+    .mainContainer::-webkit-scrollbar-thumb {
+        background: #292e338d; 
+        border-radius: 10px;
+        border: solid 2px #ffffffa8;
+    }
+    .mainContainer::-webkit-scrollbar-thumb:hover {
+        background: #00519b; 
 }
 
-/* === Title === */
-.title{
+
+/* =========================== Header =========================== */
+header{
+    text-align: center;
+    height: 80px;
+    padding: 5px 20px;
+    background-color: #1a0500;
+    border-bottom: solid 2px #ffffff;
+    filter: drop-shadow(0px 10px 20px #000000b3);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 5000;
+}
+.headerChild{
     margin: 0 auto;
     width: 830px;
 }
-h1{
+.title_mainColor, .title_witeLine, .title_blueLine, .title_backOffset {
     margin: 0px;
     position: absolute;
     font-size: 90px;
     font-family: 'Niconne', cursive;
 }
-.titleFront{
-    color: #ef5252;
-    text-shadow: 2px 2px 0px #ffffff,
-                -2px -2px 0px #ffffff,
-                -2px 2px 0px #ffffff;
-}
-.titleBack{
-    -webkit-text-stroke: 5PX #ffffff;
-    text-shadow:4px 4px 0px #3490f4,
-                -4px -4px 0px #3490f4,
-                -4px 4px 0px #3490f4,
-                7px 7px 0px #00519b,
-                -7px -7px 0px #00519b,
-                -7px 7px 0px #00519b,
-                7px 10px 10px #000000; 
-}
+.title_mainColor{ color: var(--title);}
+.title_witeLine{ -webkit-text-stroke: 4PX #ffffff;}
+.title_blueLine{ -webkit-text-stroke: 14PX var(--blue);}
+.title_backOffset{ -webkit-text-stroke: 22PX #00519b; top: 8px; text-shadow:7px 15px 10px #000000; }
+
 .addNote_Btn{
     float: right;
     width: 234px;
     height: 70px;
-    margin-top: 25px;
+    margin-top: 32px;
     background-image: url("assets/images/addNoteBtn.png");
-    filter: drop-shadow(0px 10px 7px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(0px 5px 5px #000000);
 }
 .addNote_Btn:hover{
     cursor: pointer;
     background-position: 0px 140px;
 }
 
-/* === Form === */
+/* =========================== Form =========================== */
 .formDiv{
+    box-sizing: border-box;
     position: fixed;
-    top: 200px;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 380px;
-    padding: 70px;
-    /* margin: 180px auto 0 auto; */
-    font-size: 24px;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -40%);
+    padding: 40px 70px;
     color: #ffffffaa;
     background-color: #1a0500;
-    border: solid 2px rgba(255, 255, 255, 0.744);
+    border: solid 2px #ffffffbe;
     border-radius: 30px;
-    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(0px 10px 20px #000000b3);
+}
+.formDiv h3{
+    margin-top: 0;
+    font-weight: 100;
+    font-size: 22px;
 }
 /* -- */
-textarea{
+.formDiv textarea{
     display: block;
     margin-bottom: 20px;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    font-size:17px;
 }
+.formDiv input{
+    height: 28px;
+    border-radius: 6px;
+    padding: 3px;
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+.formDiv input[type=date]{ margin-right: 30px; }
+.formDiv input[type=time]{ width: 100px; }
 
-/* === Note === */
+.formDiv button{
+    border-radius: 24px;
+    padding: 10px 26px;
+    margin: 10px 20px 0 0;
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+.formDiv button:hover{ cursor: pointer; }
+.formDiv button[type=submit]{ color: white; background-color: #00519b; border: solid 2px white;}
+.formDiv button[type=reset]{ color: white; background-color: #2d353e; border: solid 2px white;}
+
+.formDiv button[type=submit]:hover{ background-color: var(--blue);}
+.formDiv button[type=reset]:hover{ background-color: #434c57;}
+
+
+/* =========================== Board & Notes =========================== */
 .notesContainer{
-    padding: 180px 130px 0 130px;
+    padding: 80px 60px 0 140px;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -110,7 +154,7 @@ textarea{
     height: 330px;
     margin: 10px 15px;
     padding: 5px 15px;
-    font-size: 18px;
+    font-size: 17px;
     position:relative;
     filter: drop-shadow(10px 10px 5px #00000050);
 }
@@ -121,9 +165,6 @@ textarea{
 }
 .deleteBtn{
     display:none;
-}
-.noteItem:hover{
-    /* cursor: pointer; */
 }
 .noteItem:hover .deleteBtn{
     cursor: pointer;
@@ -157,7 +198,7 @@ textarea{
 }
 .noteDateAndTime span:nth-child(2){
     margin-left: 20px;
-    color: red;
+    color: var(--blue);
 }
 
 /* scroll */
@@ -175,22 +216,14 @@ textarea{
     background: #797777; 
   }
 
-  /* ======= */
-  #blackScreen{
-    position: fixed;
-    top: 0;
-    width: 5000px;
-    height: 5000px;
-    overflow: hidden;
-    background-color: #000000aa;
-  }
+  /* ========================= Footer ========================== */
   footer{
     position: fixed;
     bottom: 0;
     width: 100%;
     height: 30px;
     background-color: #1a0500;
-    border-top: solid 2px rgba(255, 255, 255, 0.744);
+    border-top: solid 2px #ffffff;
   }
   #recycle{
     position: fixed;
@@ -200,9 +233,18 @@ textarea{
     height: 160px;
     rotate: 5deg;
     background-image: url("assets/images/recycle1.png");
-    filter: drop-shadow(-5px -3px 10px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(-5px -3px 10px #000000b3);
   }
   #recycle:hover{
     cursor: pointer;
     /* background-position: 0px 160px; */
+  }
+
+  #blackScreen{
+    position: fixed;
+    top: 0;
+    width: 5000px;
+    height: 5000px;
+    overflow: hidden;
+    background-color: #000000aa;
   }
