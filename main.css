@@ -1,27 +1,36 @@
 @import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
 
-body{
+html, body{
     margin: 0;
     padding: 0;
+    height: 100%;
+}
+body{
+    box-sizing: border-box;
     background-color: #ef5252;
     background-image: url("assets/images/tileBG.png");
     background-repeat: repeat;
-    overflow-x:hidden;
+    overflow: hidden;
 }
 header{
     text-align: center;
     height: 70px;
     padding: 10px 20px;
     background-color: #1a0500;
-    color: rgba(255, 255, 255, 0.8);
     border-bottom: solid 2px rgba(255, 255, 255, 0.744);
     filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.7));
     position: fixed;
+    top: 0;
     width: 100%;
     z-index: 5000;
 }
 .mainContainer{
-    max-width: 100%;
+    box-sizing: border-box;
+    width: 100%;
+    height: calc(100% - 120px);
+    margin: 90px 0 30px 0;
+    overflow-y: auto;
+    background-color: #797777;
 }
 
 /* === Title === */
@@ -56,20 +65,29 @@ h1{
     width: 234px;
     height: 70px;
     margin-top: 25px;
-    background-image: url("assets/images/addNoteBtn_off.png");
+    background-image: url("assets/images/addNoteBtn.png");
     filter: drop-shadow(0px 10px 7px rgba(0, 0, 0, 0.7));
 }
 .addNote_Btn:hover{
     cursor: pointer;
-    background-image: url("assets/images/addNoteBtn_on.png");
+    background-position: 0px 140px;
 }
 
 /* === Form === */
 .formDiv{
-    width: 320px;
-    padding: 20px;
-    margin: auto;
-    align-items: center;
+    position: fixed;
+    top: 200px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: 380px;
+    padding: 70px;
+    /* margin: 180px auto 0 auto; */
+    font-size: 24px;
+    color: #ffffffaa;
+    background-color: #1a0500;
+    border: solid 2px rgba(255, 255, 255, 0.744);
+    border-radius: 30px;
+    filter: drop-shadow(0px 10px 20px rgba(0, 0, 0, 0.7));
 }
 /* -- */
 textarea{
@@ -79,10 +97,11 @@ textarea{
 
 /* === Note === */
 .notesContainer{
-    padding: 180px 7% 0 7%;
+    padding: 180px 130px 0 130px;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    padding-bottom: 60px;
 }
 .noteItem{
     background-image: url("assets/images/paper1.png");
@@ -103,7 +122,11 @@ textarea{
 .deleteBtn{
     display:none;
 }
+.noteItem:hover{
+    /* cursor: pointer; */
+}
 .noteItem:hover .deleteBtn{
+    cursor: pointer;
     display: inline;
 }
 .scotch{
@@ -150,4 +173,36 @@ textarea{
 }
 .noteContent::-webkit-scrollbar-thumb:hover {
     background: #797777; 
+  }
+
+  /* ======= */
+  #blackScreen{
+    position: fixed;
+    top: 0;
+    width: 5000px;
+    height: 5000px;
+    overflow: hidden;
+    background-color: #000000aa;
+  }
+  footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 30px;
+    background-color: #1a0500;
+    border-top: solid 2px rgba(255, 255, 255, 0.744);
+  }
+  #recycle{
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 120px;
+    height: 160px;
+    rotate: 5deg;
+    background-image: url("assets/images/recycle1.png");
+    filter: drop-shadow(-5px -3px 10px rgba(0, 0, 0, 0.7));
+  }
+  #recycle:hover{
+    cursor: pointer;
+    /* background-position: 0px 160px; */
   }

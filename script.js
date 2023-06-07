@@ -7,11 +7,14 @@ const taskTextBox = document.getElementById("taskTextBox");
 const dateInputBox = document.getElementById("dateInputBox");
 const timeInputBox = document.getElementById("timeInputBox");
 const form = document.getElementById("form");
+const blackScreen = document.getElementById("blackScreen");
+const recycleBin = document.getElementById("recycle");
 
 loadFromLocalStorage();
 
 function showForm(){
-
+    form.style.display = "block";
+    blackScreen.style.display = "block";
 }
 
 function createNote(){
@@ -31,22 +34,29 @@ function createNote(){
     saveToLocalStorage();
     displayNotes();
     clearForm();
+    form.style.display = "none";
+    blackScreen.style.display = "none";
 }
 
 function saveToLocalStorage(){
-    const str1 = JSON.stringify(notesArr);
-    localStorage.setItem(NOTES_StorageKey, str1);
+    const notes_str = JSON.stringify(notesArr);
+    localStorage.setItem(NOTES_StorageKey, notes_str);
 
-    const str2 = JSON.stringify(recycleArr);
-    localStorage.setItem(RECYCLE_StorageKey, str2);
+    const recycle_str = JSON.stringify(recycleArr);
+    localStorage.setItem(RECYCLE_StorageKey, recycle_str);
 }
 
 function loadFromLocalStorage(){
-    const str = localStorage.getItem(NOTES_StorageKey);
-    if(str){
-        notesArr = JSON.parse(str);
-        displayNotes();
+    const notes_str = localStorage.getItem(NOTES_StorageKey);
+    if(notes_str){
+        notesArr = JSON.parse(notes_str);
     }
+
+    const recycle_str = localStorage.getItem(RECYCLE_StorageKey);
+    if(recycle_str){
+        recycleArr = JSON.parse(recycle_str);
+    }
+    displayNotes();
 }
 
 function displayNotes(){
@@ -66,6 +76,12 @@ function displayNotes(){
         `;
     }
     allNotesContainer.innerHTML = html;
+
+    if(recycleArr.length > 0){
+        recycleBin.style.backgroundPosition = "0px 160px";
+    } else {
+        recycleBin.style.backgroundPosition = "0px 0px";
+    }
 }
 
 function editNote(noteID){
