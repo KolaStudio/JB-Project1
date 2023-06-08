@@ -29,19 +29,19 @@ body{
     margin: 90px 0 30px 0;
     overflow-y: auto;
 }
-    .mainContainer::-webkit-scrollbar{
-        width: 15px;
-    }
-    .mainContainer::-webkit-scrollbar-track {
-        margin: 10px 0;
-    }
-    .mainContainer::-webkit-scrollbar-thumb {
-        background: #292e338d; 
-        border-radius: 10px;
-        border: solid 2px #ffffffa8;
-    }
-    .mainContainer::-webkit-scrollbar-thumb:hover {
-        background: #00519b; 
+.mainContainer::-webkit-scrollbar{
+    width: 15px;
+}
+.mainContainer::-webkit-scrollbar-track {
+    margin: 10px 0;
+}
+.mainContainer::-webkit-scrollbar-thumb {
+    background: #292e338d; 
+    border-radius: 10px;
+    border: solid 2px #ffffffa8;
+}
+.mainContainer::-webkit-scrollbar-thumb:hover {
+    background: #00519b; 
 }
 
 

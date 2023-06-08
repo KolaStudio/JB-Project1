@@ -17,8 +17,32 @@ function showForm(){
     blackScreen.style.display = "block";
 }
 
-function createNote(){
+function formValidation(){
     event.preventDefault();
+    const taskText = taskTextBox.value;
+    const dateInput = dateInputBox.value;
+    const timeInput = timeInputBox.value;
+
+    taskTextBox.style.backgroundColor = "";
+    dateInputBox.style.backgroundColor = "";
+    timeInputBox.style.backgroundColor = "";
+
+    if(taskText===""){
+        taskTextBox.style.backgroundColor = "#fd1e1e";
+        return;
+    }
+    if(dateInput===""){
+        dateInputBox.style.backgroundColor = "#fd1e1e";
+        return;
+    }
+    if(timeInput===""){
+        timeInputBox.style.backgroundColor = "#fd1e1e";
+        return;
+    }
+    createNote();
+}
+
+function createNote(){
     const note = {
         task: taskTextBox.value,
         date: dateInputBox.value,
@@ -99,4 +123,7 @@ function clearForm(){
     taskTextBox.value = "";
     dateInputBox.value = "";
     timeInputBox.value = "";
+}
+function resetColor(x){
+    x.style.backgroundColor = "";
 }

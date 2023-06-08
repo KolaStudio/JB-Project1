@@ -22,12 +22,12 @@
         <div id="blackScreen" style="display: none;"></div>
         <div class="formDiv"  id="form" style="display: none;">
             <h3>Add New Task:</h3>
-            <form onsubmit="createNote()">  
-                <textarea id="taskTextBox" cols="40" rows="6"></textarea>
+            <form onsubmit="formValidation()">  
+                <textarea id="taskTextBox" cols="40" rows="6" onfocus="resetColor(this)"></textarea>
                 <label>Date</label>
-                <input type="date" id="dateInputBox">
+                <input type="date" id="dateInputBox" onfocus="resetColor(this)">
                 <label>Hour</label>
-                <input type="time" id="timeInputBox"> 
+                <input type="time" id="timeInputBox" onfocus="resetColor(this)"> 
                 <hr>
                 <button type="submit">Add Task</button>
                 <button type="reset" onclick="clearForm()">Reset</button>
