@@ -13,14 +13,14 @@
             <h1 class="title_backOffset">My Task Board</h1>
             <h1 class="title_blueLine">My Task Board</h1>
             <h1 class="title_witeLine">My Task Board</h1>
-            <h1 class="title_mainColor">My Task Board</h1>
-            <div class="addNote_Btn" onclick="showPopUp('popUpDivForm')"></div>            
+            <h1 class="title_mainColor">My Task Board</h1>               
         </div>
     </header>
-    <main class="mainContainer"> 
+    <main class="mainContainer">
+        <div class="addNote_Btn" onclick="showPopUp('popUpDivForm')"></div>
         <div id="notesContainer" class="notesContainer"><!--Note Container--></div>
         <div class="tools">
-            <div id="colorIcon"><input type="color" value="#ff0055" onchange="changeColor(this.value)" /></div>
+            <div id="colorIcon"><input type="color" value="#4b1c00" onchange="changeColor(this.value)" /></div>
             <div id="sortIcon"></div>
             <div id="recycleIcon" style="background-position: 0px 0px;" onclick="showPopUp('popUpDivBin')"></div>
         </div>
