@@ -1,13 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
 :root {
-    /* --blue: #3490f4;
-    --main: #ef5252; */
     --blue: #13375e;
     --title: #fd1e1e;
     --main: #bc0000;
     --pattern: url("assets/images/tileBG2.png");
-  }
+}
 
 html, body{
     margin: 0;
@@ -22,6 +20,8 @@ body{
     overflow: hidden;
     font-family: 'Comic Neue', cursive;
 }
+
+/* =========================== Main Container =========================== */
 .mainContainer{
     box-sizing: border-box;
     width: 100%;
@@ -86,59 +86,6 @@ header{
     background-position: 0px 140px;
 }
 
-/* =========================== Form =========================== */
-.formDiv{
-    box-sizing: border-box;
-    position: fixed;
-    left: 50%; top: 50%;
-    transform: translate(-50%, -40%);
-    padding: 40px 70px;
-    color: #ffffffaa;
-    background-color: #1a0500;
-    border: solid 2px #ffffffbe;
-    border-radius: 30px;
-    filter: drop-shadow(0px 10px 20px #000000b3);
-}
-.formDiv h3{
-    margin-top: 0;
-    font-weight: 100;
-    font-size: 22px;
-}
-/* -- */
-.formDiv textarea{
-    display: block;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px 20px;
-    font-size:17px;
-}
-.formDiv input{
-    height: 28px;
-    border-radius: 6px;
-    padding: 3px;
-    font-size: 17px;
-    margin-bottom: 7px;
-}
-.formDiv input[type=date]{ margin-right: 30px; }
-.formDiv input[type=time]{ width: 100px; }
-
-.formDiv button{
-    border-radius: 24px;
-    padding: 10px 26px;
-    margin: 10px 20px 0 0;
-    font-size: 17px;
-    margin-bottom: 7px;
-}
-.formDiv button:hover{ cursor: pointer; }
-.formDiv button[type=submit]{ color: white; background-color: #00519b; border: solid 2px white;}
-.formDiv button[type=reset]{ color: white; background-color: #2d353e; border: solid 2px white;}
-
-.formDiv button[type=submit]:hover{ background-color: var(--blue);}
-.formDiv button[type=reset]:hover{ background-color: #434c57;}
-
-
 /* =========================== Board & Notes =========================== */
 .notesContainer{
     padding: 80px 60px 0 140px;
@@ -163,10 +110,10 @@ header{
     text-align: right;
     margin: 10px 0px 5px 0px;
 }
-.deleteBtn{
+.deleteNoteBtn{
     display:none;
 }
-.noteItem:hover .deleteBtn{
+.noteItem:hover .deleteNoteBtn{
     cursor: pointer;
     display: inline;
 }
@@ -200,8 +147,7 @@ header{
     margin-left: 20px;
     color: var(--blue);
 }
-
-/* scroll */
+/* --- scroll bar --- */
 .noteContent::-webkit-scrollbar{
     width: 10px;
 }
@@ -214,18 +160,119 @@ header{
 }
 .noteContent::-webkit-scrollbar-thumb:hover {
     background: #797777; 
-  }
+}
 
-  /* ========================= Footer ========================== */
-  footer{
+
+/* =========================== Tool Bar =========================== */
+.tools{
+    position: fixed;
+    left: 20px; top: 50%;
+    transform: translate(0, -40%);
+    background-color: #1a0500;
+    border: solid 3px white;
+    border-radius: 60px;
+    width: 80px;
+    height: 280px;
+}
+.colorIcon input[type=color]{
+    opacity:.0;
+    background-color: transparent;
+    width: 50px;
+    height: 50px;
+}
+.colorIcon input[type=color]:hover{
+    cursor: pointer;
+}
+.colorIcon{
+    position: absolute;
+    top: 35px; left: 15px;
+    background-image: url("assets/images/palette_icon.png");
+    width: 50px;
+    height: 50px;
+    /* pointer-events: none; */
+}
+.colorIcon:hover{
+    opacity: .5;
+}
+/* =========================== Form =========================== */
+.formDiv{
+    box-sizing: border-box;
+    position: fixed;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -40%);
+    padding: 40px 70px;
+    color: #ffffffaa;
+    background-color: #1a0500;
+    border: solid 2px #ffffffbe;
+    border-radius: 30px;
+    filter: drop-shadow(0px 10px 20px #000000b3);
+}
+.formDiv h3{
+    margin-top: 0;
+    font-weight: 100;
+    font-size: 22px;
+}
+form textarea{
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    font-size:17px;
+}
+form input{
+    height: 28px;
+    border-radius: 6px;
+    padding: 3px;
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+form input[type=date]{ margin-right: 30px; }
+form input[type=time]{ width: 100px; }
+
+form button{
+    border-radius: 24px;
+    padding: 10px 26px;
+    margin: 10px 20px 0 0;
+    font-size: 17px;
+    margin-bottom: 7px;
+    border: solid 2px white;
+}
+form button:hover{ cursor: pointer; }
+form button[type=submit]{ color: white; background-color: #00519b;}
+form button[type=reset]{ color: white; background-color: #2d353e;}
+
+form button[type=submit]:hover{ background-color: var(--blue);}
+form button[type=reset]:hover{ background-color: #434c57;}
+
+.closePopUp{
+    color: white;
+    background-color: #2d353e;
+    border: solid 2px white;
+    border-radius: 18px; 
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px; 
+}
+
+.closePopUp:hover{
+    background-color: #434c57;
+    cursor: pointer;
+}
+
+/* ========================= Footer ========================== */
+footer{
     position: fixed;
     bottom: 0;
     width: 100%;
     height: 30px;
     background-color: #1a0500;
     border-top: solid 2px #ffffff;
-  }
-  #recycle{
+}
+#recycle{
     position: fixed;
     bottom: 10px;
     left: 10px;
@@ -234,17 +281,16 @@ header{
     rotate: 5deg;
     background-image: url("assets/images/recycle1.png");
     filter: drop-shadow(-5px -3px 10px #000000b3);
-  }
-  #recycle:hover{
+}
+#recycle:hover{
     cursor: pointer;
-    /* background-position: 0px 160px; */
-  }
+}
 
-  #blackScreen{
+#blackScreen{
     position: fixed;
     top: 0;
     width: 5000px;
     height: 5000px;
     overflow: hidden;
     background-color: #000000aa;
-  }
+}

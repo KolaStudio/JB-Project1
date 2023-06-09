@@ -9,6 +9,7 @@ const timeInputBox = document.getElementById("timeInputBox");
 const form = document.getElementById("form");
 const blackScreen = document.getElementById("blackScreen");
 const recycleBin = document.getElementById("recycle");
+let cssVariables = document.querySelector(':root');
 
 loadFromLocalStorage();
 
@@ -23,10 +24,6 @@ function formValidation(){
     const dateInput = dateInputBox.value;
     const timeInput = timeInputBox.value;
 
-    taskTextBox.style.backgroundColor = "";
-    dateInputBox.style.backgroundColor = "";
-    timeInputBox.style.backgroundColor = "";
-
     if(taskText===""){
         taskTextBox.style.backgroundColor = "#fd1e1e";
         return;
@@ -40,6 +37,13 @@ function formValidation(){
         return;
     }
     createNote();
+}
+
+function closePopUp(popUp){
+    const popUpBox = document.getElementById(popUp);
+    popUpBox.style.display = "none";
+    blackScreen.style.display = "none";
+    clearForm();
 }
 
 function createNote(){
@@ -92,7 +96,7 @@ function displayNotes(){
         <div class="noteItem" style="rotate: ${notesArr[i].visual["rotate"]}deg;">
             <img class="scotch" src="assets/images/s${notesArr[i].visual["scotch"]}.png" style="margin-left:${notesArr[i].visual["scotchPos"]}px" alt="#">
             <div class="noteTools">
-                <button id="delete_${i}" class="deleteBtn" onclick="deleteNote(${i})">X</button>
+                <button id="delete_${i}" class="deleteNoteBtn" onclick="deleteNote(${i})">X</button>
             </div>
             <div class="noteContent"><div>${notesArr[i].task}</div><span class="contentFade"></span></div>
             <div class="noteDateAndTime"><span>${notesArr[i].date}</span> <span>${notesArr[i].time}</span></div>
@@ -123,7 +127,15 @@ function clearForm(){
     taskTextBox.value = "";
     dateInputBox.value = "";
     timeInputBox.value = "";
+    resetInputColor();
 }
-function resetColor(x){
-    x.style.backgroundColor = "";
+function resetInputColor(){
+    taskTextBox.style.backgroundColor = "";
+    dateInputBox.style.backgroundColor = "";
+    timeInputBox.style.backgroundColor = "";
+}
+
+
+function changeColor(color){
+    cssVariables.style.setProperty('--main', color);
 }

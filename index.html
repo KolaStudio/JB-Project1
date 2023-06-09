@@ -19,26 +19,25 @@
     </header>
     <main class="mainContainer"> 
         <div id="allNotesContainer" class="notesContainer"><!--Note Container--></div>
+        <div class="tools">
+            <div class="colorIcon">
+                <input type="color" value="#ff0055" onchange="changeColor(this.value)" />
+            </div>
+        </div>
         <div id="blackScreen" style="display: none;"></div>
         <div class="formDiv"  id="form" style="display: none;">
+            <button class="closePopUp" onclick="closePopUp('form')">X</button>
             <h3>Add New Task:</h3>
             <form onsubmit="formValidation()">  
-                <textarea id="taskTextBox" cols="40" rows="6" onfocus="resetColor(this)"></textarea>
+                <textarea id="taskTextBox" cols="40" rows="6" onfocus="resetColor()"></textarea>
                 <label>Date</label>
-                <input type="date" id="dateInputBox" onfocus="resetColor(this)">
+                <input type="date" id="dateInputBox" onfocus="resetColor()">
                 <label>Hour</label>
-                <input type="time" id="timeInputBox" onfocus="resetColor(this)"> 
+                <input type="time" id="timeInputBox" onfocus="resetColor()"> 
                 <hr>
                 <button type="submit">Add Task</button>
                 <button type="reset" onclick="clearForm()">Reset</button>
             </form>
-        </div>
-        
-        <div id="alertBoxContainer">
-            <!-- <p>This item will be permanently deleted.
-            <br>do you want to continue?</p>
-            <button id="confirmBtn" onclick="deleteAlert(true)">Yes</button>
-            <button id="cancelBtn" onclick="deleteAlert(false)">Cancel</button> -->
         </div>
     </main>
     <footer>
