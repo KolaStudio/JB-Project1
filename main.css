@@ -301,6 +301,7 @@ form button[type=reset]:hover{ background-color: #434c57;}
     background-color: none;
     background-image:url("assets/images/restoreIcon.png");
     background-position: 0px 0px;
+    margin: 0 auto;
 }
 .restoreBtn:hover{
     background-position: 0px 30px;
@@ -309,6 +310,9 @@ form button[type=reset]:hover{ background-color: #434c57;}
 .emptyBinBtn{
     background-color: #d60b0b;
     margin: 0px 0 30px 0;
+}
+#recycleBinIsEmpty{
+    font-size: 26px;
 }
 /* ========================= Footer ========================== */
 footer{

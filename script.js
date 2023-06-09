@@ -82,7 +82,7 @@ function loadFromLocalStorage(){
     if(notes_str){ notesArr = JSON.parse(notes_str); }
     if(recycle_str){ recycleArr = JSON.parse(recycle_str); }
     displayNotes();
-    createRecycleList();
+    displayRecycleList();
 }
 
 function displayNotes(){    
@@ -101,11 +101,17 @@ function displayNotes(){
     }
     allNotesContainer.innerHTML = html;
 
-    const recycleBinIcon = document.getElementById("recycleIcon");
-    if(recycleArr.length > 0){ recycleBinIcon.style.backgroundPosition = "0px 50px"; }
-    else { recycleBinIcon.style.backgroundPosition = "0px 0px"; }
+
 }
-function createRecycleList(){ 
+function displayRecycleList(){ 
+    if(recycleArr.length>0){
+        document.getElementById("recycleItems").style.display = "block";
+        document.getElementById("recycleBinIsEmpty").style.display = "none";
+    }else{
+        document.getElementById("recycleItems").style.display = "none";
+        document.getElementById("recycleBinIsEmpty").style.display = "block";
+    }
+
     let html = "";
     for(let i=0; i<recycleArr.length; i++){
         html += `
@@ -115,26 +121,37 @@ function createRecycleList(){
         <td><div class="restoreBtn" onclick="restoreNote(${i})"></div</td>
         </tr>`;
     }
+       
     recycleContainer.innerHTML = html;
-}
-function editNote(noteID){
-    //Open popup form with note data for edit
-}
 
+    const recycleBinIcon = document.getElementById("recycleIcon");
+    if(recycleArr.length > 0){ recycleBinIcon.style.backgroundPosition = "0px 50px"; }
+    else { recycleBinIcon.style.backgroundPosition = "0px 0px"; }
+}
 function moveNoteToRecycle(noteID){
     recycleArr.push(notesArr[noteID]);
     notesArr.splice(noteID, 1);
     saveToLocalStorage();
     displayNotes();
-    createRecycleList();
+    displayRecycleList();
 }
 function restoreNote(noteID){
     notesArr.push(recycleArr[noteID]);
     recycleArr.splice(noteID, 1);
     saveToLocalStorage();
     displayNotes();
-    createRecycleList();
+    displayRecycleList();
 }
+function emptyBin(){
+    recycleArr.splice(0, recycleArr.length);
+    saveToLocalStorage();
+    displayRecycleList();
+}
+function editNote(noteID){
+    //Open popup form with note data for edit
+}
+
+
 function clearForm(){
     taskTextBox.value = "";
     dateInputBox.value = "";
