@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Niconne&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap');
 :root {
-    --blue: #13375e;
+    --darkBlue: #13375e;
+    --lightBlue: #00519b;
     --title: #fd1e1e;
     --main: #bc0000;
     --pattern: url("assets/images/tileBG2.png");
 }
-
 html, body{
     margin: 0;
     padding: 0;
@@ -29,18 +29,18 @@ body{
     margin: 90px 0 30px 0;
     overflow-y: auto;
 }
-.mainContainer::-webkit-scrollbar{
+::-webkit-scrollbar{
     width: 15px;
 }
-.mainContainer::-webkit-scrollbar-track {
-    margin: 10px 0;
+::-webkit-scrollbar-track {
+    margin: 18px 0;
 }
-.mainContainer::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: #292e338d; 
     border-radius: 10px;
     border: solid 2px #ffffffa8;
 }
-.mainContainer::-webkit-scrollbar-thumb:hover {
+::-webkit-scrollbar-thumb:hover {
     background: #00519b; 
 }
 
@@ -70,7 +70,7 @@ header{
 }
 .title_mainColor{ color: var(--title);}
 .title_witeLine{ -webkit-text-stroke: 4PX #ffffff;}
-.title_blueLine{ -webkit-text-stroke: 14PX var(--blue);}
+.title_blueLine{ -webkit-text-stroke: 14PX var(--darkBlue);}
 .title_backOffset{ -webkit-text-stroke: 22PX #00519b; top: 8px; text-shadow:7px 15px 10px #000000; }
 
 .addNote_Btn{
@@ -86,7 +86,7 @@ header{
     background-position: 0px 140px;
 }
 
-/* =========================== Board & Notes =========================== */
+/* =========================== Notes =========================== */
 .notesContainer{
     padding: 80px 60px 0 140px;
     display: flex;
@@ -145,7 +145,7 @@ header{
 }
 .noteDateAndTime span:nth-child(2){
     margin-left: 20px;
-    color: var(--blue);
+    color: var(--darkBlue);
 }
 /* --- scroll bar --- */
 .noteContent::-webkit-scrollbar{
@@ -155,15 +155,15 @@ header{
     margin: 7px 0;
 }
 .noteContent::-webkit-scrollbar-thumb {
-    background: rgba(121, 119, 119, 0.2); 
+    background: #79777733; 
+    border: none;
     border-radius: 8px;
 }
 .noteContent::-webkit-scrollbar-thumb:hover {
     background: #797777; 
 }
 
-
-/* =========================== Tool Bar =========================== */
+/* =========================== Side Tool Bar =========================== */
 .tools{
     position: fixed;
     left: 20px; top: 50%;
@@ -171,36 +171,46 @@ header{
     background-color: #1a0500;
     border: solid 3px white;
     border-radius: 60px;
-    width: 80px;
+    width: 70px;
     height: 280px;
 }
-.colorIcon input[type=color]{
-    opacity:.0;
-    background-color: transparent;
+.tools div{
     width: 50px;
     height: 50px;
+    margin: 32px auto;
 }
-.colorIcon input[type=color]:hover{
+.tools div:hover{
     cursor: pointer;
 }
-.colorIcon{
-    position: absolute;
-    top: 35px; left: 15px;
-    background-image: url("assets/images/palette_icon.png");
+
+#colorIcon{ background-image: url("assets/images/palette_icon.png"); }
+#colorIcon:hover{ background-image: url("assets/images/palette_hover_icon.png"); }
+
+#sortIcon{ background-image: url("assets/images/sort_icon.png"); }
+#sortIcon:hover{ background-image: url("assets/images/sort_hover_icon.png"); }
+
+#recycleIcon{ background-image: url("assets/images/recycle_icon.png"); }
+#recycleIcon:hover{ background-image: url("assets/images/recycle_hover_icon.png"); }
+
+#colorIcon input[type=color]{
+    opacity: 0;
     width: 50px;
     height: 50px;
-    /* pointer-events: none; */
 }
-.colorIcon:hover{
-    opacity: .5;
+#colorIcon input[type=color]:hover{
+    cursor: pointer;
 }
-/* =========================== Form =========================== */
-.formDiv{
+
+/* =========================== Form PopUp =========================== */
+.popUpDiv{
     box-sizing: border-box;
     position: fixed;
     left: 50%; top: 50%;
     transform: translate(-50%, -40%);
     padding: 40px 70px;
+    max-height: 70%;
+    min-width: 585px;
+    overflow-y: auto;
     color: #ffffffaa;
     background-color: #1a0500;
     border: solid 2px #ffffffbe;
@@ -231,19 +241,21 @@ form input{
 form input[type=date]{ margin-right: 30px; }
 form input[type=time]{ width: 100px; }
 
-form button{
+.button{
     border-radius: 24px;
     padding: 10px 26px;
     margin: 10px 20px 0 0;
     font-size: 17px;
     margin-bottom: 7px;
     border: solid 2px white;
+    color: white;
 }
-form button:hover{ cursor: pointer; }
+.button:hover{cursor: pointer;}
+
 form button[type=submit]{ color: white; background-color: #00519b;}
 form button[type=reset]{ color: white; background-color: #2d353e;}
 
-form button[type=submit]:hover{ background-color: var(--blue);}
+form button[type=submit]:hover{ background-color: var(--darkBlue);}
 form button[type=reset]:hover{ background-color: #434c57;}
 
 .closePopUp{
@@ -263,6 +275,41 @@ form button[type=reset]:hover{ background-color: #434c57;}
     cursor: pointer;
 }
 
+/* ========================= Recycle PopUp ========================== */
+.popUpDiv table{
+    width: 100%;
+}
+.popUpDiv th{
+    text-align: left;
+    font-size: 22px;
+    color: var(--lightBlue);
+}
+.popUpDiv td{
+    vertical-align: top;
+    padding-top: 10px;
+    border-top: solid 1PX #ffffff2c;
+}
+.popUpDiv td:first-of-type{
+    width: 100px;
+}
+.popUpDiv td:last-of-type{
+    width: 50px;
+}
+.restoreBtn{
+    width: 30px;
+    height: 30px;
+    background-color: none;
+    background-image:url("assets/images/restoreIcon.png");
+    background-position: 0px 0px;
+}
+.restoreBtn:hover{
+    background-position: 0px 30px;
+    cursor: pointer;
+}
+.emptyBinBtn{
+    background-color: #d60b0b;
+    margin: 0px 0 30px 0;
+}
 /* ========================= Footer ========================== */
 footer{
     position: fixed;
@@ -272,20 +319,6 @@ footer{
     background-color: #1a0500;
     border-top: solid 2px #ffffff;
 }
-#recycle{
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    width: 120px;
-    height: 160px;
-    rotate: 5deg;
-    background-image: url("assets/images/recycle1.png");
-    filter: drop-shadow(-5px -3px 10px #000000b3);
-}
-#recycle:hover{
-    cursor: pointer;
-}
-
 #blackScreen{
     position: fixed;
     top: 0;
