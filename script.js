@@ -1,8 +1,13 @@
 const NOTES_StorageKey = "Kola-Note";
 const RECYCLE_StorageKey = "Kola-Recycle";
+const SETTINGS_StorageKey = "Kola-Settings";
 
 let notesArr = [];
 let recycleArr = [];
+let settingsObj = {
+    background: "#4b1c00",
+    sortByDueDate: false
+};
 
 const taskTextBox = document.getElementById("taskTextBox");
 const dateInputBox = document.getElementById("dateInputBox");
@@ -14,7 +19,20 @@ const blackScreen = document.getElementById("blackScreen");
 let recycleList = document.getElementById("recycleList");
 let cssVariables = document.querySelector(':root');
 
-loadFromLocalStorage();
+function onLoadPage(){
+    const settings_str = localStorage.getItem(SETTINGS_StorageKey);
+    const notes_str = localStorage.getItem(NOTES_StorageKey);
+    const recycle_str = localStorage.getItem(RECYCLE_StorageKey);  
+
+    if(settings_str){ settingsObj = JSON.parse(settings_str); }
+    if(notes_str){ notesArr = JSON.parse(notes_str); }
+    if(recycle_str){ recycleArr = JSON.parse(recycle_str); }
+
+    cssVariables.style.setProperty('--main', settingsObj.background);
+    
+    displayNotes();
+    displayRecycleList();
+}
 
 function showPopUp(popUp){
     const popUpBox = document.getElementById(popUp);
@@ -76,19 +94,21 @@ function saveToLocalStorage(){
     localStorage.setItem(RECYCLE_StorageKey, recycle_str);
 }
 
-function loadFromLocalStorage(){
-    const notes_str = localStorage.getItem(NOTES_StorageKey);
-    const recycle_str = localStorage.getItem(RECYCLE_StorageKey);
-    if(notes_str){ notesArr = JSON.parse(notes_str); }
-    if(recycle_str){ recycleArr = JSON.parse(recycle_str); }
-    displayNotes();
-    displayRecycleList();
-}
-
-function displayNotes(){    
+function displayNotes(){ 
+    if(settingsObj.sortByDueDate){
+        notesArr.sort(function(a, b){return new Date(a.date) - new Date(b.date)});
+    }else{
+        notesArr.sort(function(a, b){return new Date(a.create) - new Date(b.create)});
+    }
+    
+    const currentDate = new Date(); 
     let html = "";
+    let dateStatusClass = "";  
 
     for(let i=0; i<notesArr.length; i++){
+        let givenDate = new Date(notesArr[i].date);
+        givenDate.getTime() < currentDate.getTime() ? dateStatusClass="dateAlert" : dateStatusClass="";
+        
         html += `
         <div class="noteItem" style="rotate: ${notesArr[i].visual["rotate"]}deg;">
             <img class="scotch" src="assets/images/s${notesArr[i].visual["scotch"]}.png" style="margin-left:${notesArr[i].visual["scotchPos"]}px" alt="#">
@@ -96,13 +116,13 @@ function displayNotes(){
                 <button id="delete_${i}" class="deleteNoteBtn" onclick="moveNoteToRecycle(${i})">X</button>
             </div>
             <div class="noteContent"><div>${notesArr[i].task}</div><span class="contentFade"></span></div>
-            <div class="noteDateAndTime"><span>${notesArr[i].date}</span> <span>${notesArr[i].time}</span></div>
+            <div class="noteDateAndTime ${dateStatusClass}"><span>${formatDate(notesArr[i].date)}</span> <span>${notesArr[i].time}</span></div>
         </div>`;
     }
+
     allNotesContainer.innerHTML = html;
-
-
 }
+
 function displayRecycleList(){ 
     if(recycleArr.length>0){
         document.getElementById("recycleItems").style.display = "block";
@@ -151,7 +171,6 @@ function editNote(noteID){
     //Open popup form with note data for edit
 }
 
-
 function clearForm(){
     taskTextBox.value = "";
     dateInputBox.value = "";
@@ -165,4 +184,25 @@ function resetInputColor(){
 }
 function changeColor(color){
     cssVariables.style.setProperty('--main', color);
+    settingsObj.background = color;
+    localStorage.setItem(SETTINGS_StorageKey, JSON.stringify(settingsObj));
+}
+function sortNotes(){
+    if(settingsObj.sortByDueDate){
+        settingsObj.sortByDueDate = false;
+    }else{
+        settingsObj.sortByDueDate = true;
+    }
+    localStorage.setItem(SETTINGS_StorageKey, JSON.stringify(settingsObj));
+    displayNotes();
+}
+
+function formatDate(d){
+    const date = new Date(d);
+
+    const month = date.getMonth();
+    const day = date.getDate();
+    const year = date.getFullYear();
+
+    return(`${day}-${month+1}-${year}`);
 }

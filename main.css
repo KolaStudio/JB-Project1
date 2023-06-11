@@ -4,7 +4,7 @@
     --darkBlue: #13375e;
     --lightBlue: #00519b;
     --title: #fd1e1e;
-    --main: #4b1c00;
+    --main: #000000;
     --pattern: url("assets/images/tileBG2.png");
 }
 html, body{
@@ -20,7 +20,13 @@ body{
     overflow: hidden;
     font-family: 'Comic Neue', cursive;
 }
-
+h3{
+    font-size: 26px;
+    color: var(--lightBlue);
+    margin: 0 0 15px 0;
+    padding-bottom: 10px;
+    border-bottom: solid 1px #ffffff41;
+}
 /* =========================== Main Container =========================== */
 .mainContainer{
     box-sizing: border-box;
@@ -41,7 +47,7 @@ body{
     border: solid 2px #ffffffa8;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #00519b; 
+    background: var(--lightBlue); 
 }
 
 
@@ -72,22 +78,29 @@ header{
 .title_mainColor{ color: var(--title);}
 .title_witeLine{ -webkit-text-stroke: 4PX #ffffff;}
 .title_blueLine{ -webkit-text-stroke: 14PX var(--darkBlue);}
-.title_backOffset{ -webkit-text-stroke: 22PX #00519b; top: 8px; text-shadow:7px 15px 10px #000000; }
+.title_backOffset{ -webkit-text-stroke: 22PX var(--lightBlue); top: 8px; text-shadow:7px 15px 10px #000000; }
 
 .addNote_Btn{
     position: fixed;
     float: right;
-    width: 234px;
-    height: 70px;
-    background-image: url(assets/images/addNoteBtn.png);
+    color: white;
+    font-size: 28px;
+    padding: 8px 30px 8px 55px;
+    /* margin: 15px; */
+    border-radius: 30px;
+    border: solid 2px white;
+    background-color: var(--lightBlue);
+    background-image: url(assets/images/add_icon.png);
+    background-position:  18px 12px;
+    background-repeat: no-repeat;
     filter: drop-shadow(0px 5px 5px #000000);
     left: 50%;
-    transform: translate(-117px, 40%);
+    transform: translate(-117px, 55%);
     z-index: 100;
 }
 .addNote_Btn:hover{
     cursor: pointer;
-    background-position: 0px 140px;
+    background-color: var(--darkBlue);
 }
 
 /* =========================== Notes =========================== */
@@ -97,6 +110,7 @@ header{
     flex-wrap: wrap;
     justify-content: flex-start;
     padding-bottom: 60px;
+    /* filter: blur(4px); */
 }
 .noteItem{
     background-image: url("assets/images/paper1.png");
@@ -151,6 +165,9 @@ header{
     margin-left: 20px;
     color: var(--darkBlue);
 }
+.dateAlert, .dateAlert span:nth-child(2){
+    color: red;
+}
 /* --- scroll bar --- */
 .noteContent::-webkit-scrollbar{
     width: 10px;
@@ -172,7 +189,7 @@ header{
     position: fixed;
     left: 20px; top: 50%;
     transform: translate(0, -40%);
-    background-color: #1a0500af;
+    background-color: #1a0500;
     border: solid 2px white;
     border-radius: 60px;
     width: 70px;
@@ -183,8 +200,27 @@ header{
     height: 50px;
     margin: 32px auto;
 }
-.tools div:hover{
+.tools div:hover {
     cursor: pointer;
+}
+.tools div .tooltip {
+    visibility: hidden;
+    width: 160px; 
+    background-color: #1a0500cc;
+    color: #ffffff;
+    text-align: center;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-left: 65px;
+    position:absolute;
+    opacity: 1;
+    transition: opacity 1s;
+    transition-delay: 1s;
+    transition-timing-function: ease;
+}
+.tools div:hover .tooltip {
+    visibility: visible;
+    opacity: 0;
 }
 
 #colorIcon{ background-image: url("assets/images/palette_icon.png"); }
@@ -200,6 +236,7 @@ header{
     opacity: 0;
     width: 50px;
     height: 50px;
+    position: absolute;
 }
 #colorIcon input[type=color]:hover{
     cursor: pointer;
@@ -215,7 +252,7 @@ header{
     max-height: 70%;
     min-width: 585px;
     overflow-y: auto;
-    color: #ffffffaa;
+    color: #ffffffdb;
     background-color: #1a0500;
     border: solid 2px #ffffffbe;
     border-radius: 30px;
@@ -257,7 +294,7 @@ form input[type=time]{ width: 100px; }
 }
 .button:hover{cursor: pointer;}
 
-form button[type=submit]{ color: white; background-color: #00519b;}
+form button[type=submit]{ color: white; background-color: var(--lightBlue);}
 form button[type=reset]{ color: white; background-color: #2d353e;}
 
 form button[type=submit]:hover{ background-color: var(--darkBlue);}
@@ -327,6 +364,7 @@ footer{
     height: 30px;
     background-color: #1a0500;
     border-top: solid 2px #ffffff;
+    z-index: 5000;
 }
 #blackScreen{
     position: fixed;
@@ -334,6 +372,8 @@ footer{
     width: 5000px;
     height: 5000px;
     overflow: hidden;
-    background-color: #000000aa;
+    background-color: #000000cc;
+    /* background-color: var(--main); */
+    opacity: .8;
     z-index: 4990;
 }

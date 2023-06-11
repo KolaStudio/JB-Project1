@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="main.css">
     <script defer src="script.js"></script>
 </head>
-<body>
+<body onload="onLoadPage()">
     <header>
         <div class="headerChild">
             <h1 class="title_backOffset">My Task Board</h1>
@@ -16,15 +16,26 @@
             <h1 class="title_mainColor">My Task Board</h1>               
         </div>
     </header>
+
     <main class="mainContainer">
-        <div class="addNote_Btn" onclick="showPopUp('popUpDivForm')"></div>
+        <div class="addNote_Btn" onclick="showPopUp('popUpDivForm')">Add Task</div>
         <div id="notesContainer" class="notesContainer"><!--Note Container--></div>
+
+        <!-- side Tool bar -->
         <div class="tools">
-            <div id="colorIcon"><input type="color" value="#4b1c00" onchange="changeColor(this.value)" /></div>
-            <div id="sortIcon"></div>
-            <div id="recycleIcon" style="background-position: 0px 0px;" onclick="showPopUp('popUpDivBin')"></div>
+            <div id="colorIcon">
+                <span class="tooltip">Change Background color</span>
+                <input type="color" value="#4b1c00" onchange="changeColor(this.value)"/>
+            </div>
+            <div id="sortIcon" onclick="sortNotes()">
+                <span class="tooltip">Sort by Due Date<br>or by task created</span>
+            </div>
+            <div id="recycleIcon" style="background-position: 0px 0px;" onclick="showPopUp('popUpDivBin')">
+                <span class="tooltip">Show items in Recycle Bin</span>
+            </div>
         </div>
         <div id="blackScreen" style="display: none;"></div>
+
         <!-- popUp Notes Form -->
         <div class="popUpDiv"  id="popUpDivForm" style="display: none;">
             <button class="closePopUp" onclick="closePopUp('popUpDivForm')">X</button>
@@ -40,6 +51,7 @@
                 <button class="button" type="reset" onclick="clearForm()">Reset</button>
             </form>
         </div>
+
         <!-- popUp Recycle Bin -->
         <div class="popUpDiv" id="popUpDivBin" style="display: none;">
             <button class="closePopUp" onclick="closePopUp('popUpDivBin')">X</button>
@@ -58,6 +70,7 @@
             </div>
             <div id="recycleBinIsEmpty" style="display: none;">- The Recycle Bin is Empty -</div>
         </div>
+
     </main>
     <footer></footer>
 </body>
