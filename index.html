@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="main.css">
     <script defer src="script.js"></script>
 </head>
-<body onload="onLoadPage()">
+<body>
     <header>
         <div class="headerChild">
-            <h1 class="title_backOffset">My Task Board</h1>
-            <h1 class="title_blueLine">My Task Board</h1>
-            <h1 class="title_witeLine">My Task Board</h1>
-            <h1 class="title_mainColor">My Task Board</h1>               
+            <h1 class="title_backOffset">Kola Task Board</h1>
+            <h1 class="title_blueLine">Kola Task Board</h1>
+            <h1 class="title_witeLine">Kola Task Board</h1>
+            <h1 class="title_mainColor">Kola Task Board</h1>               
         </div>
     </header>
 
@@ -21,25 +21,25 @@
         <div class="addNote_Btn" onclick="showPopUp('popUpDivForm')">Add Task</div>
         <div id="notesContainer" class="notesContainer"><!--Note Container--></div>
 
-        <!-- side Tool bar -->
+        <!--================ side Tool bar ================-->
         <div class="tools">
             <div id="colorIcon">
                 <span class="tooltip">Change Background color</span>
-                <input type="color" value="#4b1c00" onchange="changeColor(this.value)"/>
+                <input type="color" value="#4b1c00" onchange="changeColor(this.value)" id="colorInput"/>
             </div>
-            <div id="sortIcon" onclick="sortNotes()">
+            <div id="sortIcon" onclick="sortNotes()" style="background-image: url('assets/images/sort_icon.png');">
                 <span class="tooltip">Sort by Due Date<br>or by task created</span>
             </div>
-            <div id="recycleIcon" style="background-position: 0px 0px;" onclick="showPopUp('popUpDivBin')">
+            <div id="recycleIcon" style="background-image: url('assets/images/recycleEmpty_icon.png');" onclick="showPopUp('popUpDivBin')">
                 <span class="tooltip">Show items in Recycle Bin</span>
             </div>
         </div>
         <div id="blackScreen" style="display: none;"></div>
 
-        <!-- popUp Notes Form -->
+        <!--================ popUp Add Notes Form ================-->
         <div class="popUpDiv"  id="popUpDivForm" style="display: none;">
             <button class="closePopUp" onclick="closePopUp('popUpDivForm')">X</button>
-            <h3>Add New Task:</h3>
+            <h3 id="formTitle">Add New Task:</h3>
             <form onsubmit="formValidation()">  
                 <textarea id="taskTextBox" cols="40" rows="6" onfocus="resetInputColor()"></textarea>
                 <label>Date</label>
@@ -47,12 +47,12 @@
                 <label>Hour</label>
                 <input type="time" id="timeInputBox" onfocus="resetInputColor()"> 
                 <hr>
-                <button class="button" type="submit">Add Task</button>
+                <button class="button" type="submit" id="submitButton">Add Task</button>
                 <button class="button" type="reset" onclick="clearForm()">Reset</button>
             </form>
         </div>
 
-        <!-- popUp Recycle Bin -->
+        <!--================ popUp Recycle Bin ================-->
         <div class="popUpDiv" id="popUpDivBin" style="display: none;">
             <button class="closePopUp" onclick="closePopUp('popUpDivBin')">X</button>
             <div id="recycleItems" style="display: none;">
@@ -71,6 +71,22 @@
             <div id="recycleBinIsEmpty" style="display: none;">- The Recycle Bin is Empty -</div>
         </div>
 
+        <!--================ popUp Welcome Message ================-->
+        <div class="welcome" id="welcome" style="display: none;">
+            <div class="popUpDiv" id="welcomePopUp" style="display: block;">
+                <h2>Welcome !</h2>
+                <h3>You haven't added any tasks yet...</h3>
+                    <p>With "Kola Task board" you can do the following:</p>
+                    <ul>
+                        <li>Add tasks includes by clicking the "+Add Task" button.</li>
+                        <li>Move a task to the recycle bin, restore it or delete it permanently.</li>
+                        <li>Get a notification when the deadline has passed.</li>
+                        <li>Sort the tasks by due date, or by the time the task was created.</li>
+                        <li>Adjust the background color according to your personal preference.</li>
+                    </ul>
+                <button class="welcomeBtn button" onclick="closePopUp('welcomePopUp')">Let's Start!</button>
+            </div>
+        </div>
     </main>
     <footer></footer>
 </body>

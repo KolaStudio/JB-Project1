@@ -5,7 +5,7 @@
     --lightBlue: #00519b;
     --title: #fd1e1e;
     --main: #000000;
-    --pattern: url("assets/images/tileBG2.png");
+    --pattern: url("assets/images/tileBG.png");
 }
 html, body{
     margin: 0;
@@ -26,6 +26,50 @@ h3{
     margin: 0 0 15px 0;
     padding-bottom: 10px;
     border-bottom: solid 1px #ffffff41;
+}
+.button{
+    border-radius: 24px;
+    padding: 10px 26px;
+    margin: 10px 20px 0 0;
+    font-size: 17px;
+    margin-bottom: 7px;
+    border: solid 2px white;
+    color: white;
+}
+.button:hover{
+    cursor: pointer;
+}
+.popUpDiv{
+    box-sizing: border-box;
+    position: fixed;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -40%);
+    padding: 40px 70px;
+    max-height: 70%;
+    min-width: 585px;
+    overflow-y: auto;
+    color: #ffffffdb;
+    background-color: #1a0500;
+    border: solid 2px #ffffffbe;
+    border-radius: 30px;
+    filter: drop-shadow(0px 10px 20px #000000b3);
+    z-index: 5000;
+}
+.closePopUp{
+    color: white;
+    background-color: #2d353e;
+    border: solid 2px white;
+    border-radius: 18px; 
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 35px;
+    height: 35px; 
+}
+
+.closePopUp:hover{
+    background-color: #434c57;
+    cursor: pointer;
 }
 /* =========================== Main Container =========================== */
 .mainContainer{
@@ -49,7 +93,6 @@ h3{
 ::-webkit-scrollbar-thumb:hover {
     background: var(--lightBlue); 
 }
-
 
 /* =========================== Header =========================== */
 header{
@@ -103,6 +146,107 @@ header{
     background-color: var(--darkBlue);
 }
 
+/* =========================== Form PopUp =========================== */
+.formDiv h3{
+    margin-top: 0;
+    font-weight: 100;
+    font-size: 22px;
+}
+form textarea{
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 20px;
+    font-size:17px;
+}
+form input{
+    height: 28px;
+    border-radius: 6px;
+    padding: 3px;
+    font-size: 17px;
+    margin-bottom: 7px;
+}
+form input[type=date]{ margin-right: 30px; }
+form input[type=time]{ width: 100px; }
+
+
+
+form button[type=submit]{ color: white; background-color: var(--lightBlue);}
+form button[type=reset]{ color: white; background-color: #2d353e;}
+
+form button[type=submit]:hover{ background-color: var(--darkBlue);}
+form button[type=reset]:hover{ background-color: #434c57;}
+
+
+/* ========================= Recycle PopUp ========================== */
+.popUpDiv table{
+    width: 100%;
+}
+.popUpDiv th{
+    text-align: left;
+    font-size: 22px;
+    color: var(--lightBlue);
+}
+.popUpDiv td{
+    vertical-align: top;
+    padding-top: 10px;
+    border-top: solid 1PX #ffffff2c;
+}
+.popUpDiv td:first-of-type{
+    width: 100px;
+}
+.popUpDiv td:last-of-type{
+    width: 50px;
+}
+.restoreBtn{
+    width: 30px;
+    height: 30px;
+    background-color: none;
+    background-image:url("assets/images/restoreIcon.png");
+    background-position: 0px 0px;
+    margin: 0 auto;
+}
+.restoreBtn:hover{
+    background-position: 0px 30px;
+    cursor: pointer;
+}
+.emptyBinBtn{
+    background-color: #d60b0b;
+    margin: 0px 0 30px 0;
+}
+#recycleBinIsEmpty{
+    font-size: 26px;
+}
+
+/* ========================= Welcome PopUp ========================== */
+.welcome p{
+    font-size: 18px;
+
+}
+.welcome h2{
+    font-weight: lighter;
+    font-size: 46px;
+    color:#2684dc;
+    margin: 0 0 0 0;  
+}
+.welcome h3{
+    font-size: 24px;
+    color: white;
+    font-weight: lighter;
+}
+.welcomeBtn{
+    background-color: green;
+}
+.welcomeBtn:hover{
+    background-color: rgb(49, 182, 49);
+}
+.welcome li{
+    font-size: 22xp;
+    line-height: 24px;
+}
+
 /* =========================== Notes =========================== */
 .notesContainer{
     padding: 140px 60px 0 140px;
@@ -110,7 +254,6 @@ header{
     flex-wrap: wrap;
     justify-content: flex-start;
     padding-bottom: 60px;
-    /* filter: blur(4px); */
 }
 .noteItem{
     background-image: url("assets/images/paper1.png");
@@ -130,6 +273,11 @@ header{
 }
 .deleteNoteBtn{
     display:none;
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+.deleteNoteBtn:hover{
+    background-color: #f7bcbc;
 }
 .noteItem:hover .deleteNoteBtn{
     cursor: pointer;
@@ -223,14 +371,17 @@ header{
     opacity: 0;
 }
 
-#colorIcon{ background-image: url("assets/images/palette_icon.png"); }
-#colorIcon:hover{ background-image: url("assets/images/palette_hover_icon.png"); }
+#colorIcon{ 
+    background-image: url("assets/images/palette_icon.png");
+    background-position:  0px 0px; 
+}
+#colorIcon:hover{ background-position:  0px 50px; }
 
-#sortIcon{ background-image: url("assets/images/sort_icon.png"); }
-#sortIcon:hover{ background-image: url("assets/images/sort_hover_icon.png"); }
+#sortIcon{ background-position:  0px 0px; }
+#sortIcon:hover{ background-position:  0px 50px; }
 
-#recycleIcon{ background-image: url("assets/images/recycle_icon.png"); }
-#recycleIcon:hover{ background-image: url("assets/images/recycle_hover_icon.png"); }
+#recycleIcon{ background-position:  0px 0px; }
+#recycleIcon:hover{ background-position:  0px 50px; }
 
 #colorIcon input[type=color]{
     opacity: 0;
@@ -242,120 +393,6 @@ header{
     cursor: pointer;
 }
 
-/* =========================== Form PopUp =========================== */
-.popUpDiv{
-    box-sizing: border-box;
-    position: fixed;
-    left: 50%; top: 50%;
-    transform: translate(-50%, -40%);
-    padding: 40px 70px;
-    max-height: 70%;
-    min-width: 585px;
-    overflow-y: auto;
-    color: #ffffffdb;
-    background-color: #1a0500;
-    border: solid 2px #ffffffbe;
-    border-radius: 30px;
-    filter: drop-shadow(0px 10px 20px #000000b3);
-    z-index: 5000;
-}
-.formDiv h3{
-    margin-top: 0;
-    font-weight: 100;
-    font-size: 22px;
-}
-form textarea{
-    display: block;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    width: 100%;
-    box-sizing: border-box;
-    padding: 12px 20px;
-    font-size:17px;
-}
-form input{
-    height: 28px;
-    border-radius: 6px;
-    padding: 3px;
-    font-size: 17px;
-    margin-bottom: 7px;
-}
-form input[type=date]{ margin-right: 30px; }
-form input[type=time]{ width: 100px; }
-
-.button{
-    border-radius: 24px;
-    padding: 10px 26px;
-    margin: 10px 20px 0 0;
-    font-size: 17px;
-    margin-bottom: 7px;
-    border: solid 2px white;
-    color: white;
-}
-.button:hover{cursor: pointer;}
-
-form button[type=submit]{ color: white; background-color: var(--lightBlue);}
-form button[type=reset]{ color: white; background-color: #2d353e;}
-
-form button[type=submit]:hover{ background-color: var(--darkBlue);}
-form button[type=reset]:hover{ background-color: #434c57;}
-
-.closePopUp{
-    color: white;
-    background-color: #2d353e;
-    border: solid 2px white;
-    border-radius: 18px; 
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 35px;
-    height: 35px; 
-}
-
-.closePopUp:hover{
-    background-color: #434c57;
-    cursor: pointer;
-}
-
-/* ========================= Recycle PopUp ========================== */
-.popUpDiv table{
-    width: 100%;
-}
-.popUpDiv th{
-    text-align: left;
-    font-size: 22px;
-    color: var(--lightBlue);
-}
-.popUpDiv td{
-    vertical-align: top;
-    padding-top: 10px;
-    border-top: solid 1PX #ffffff2c;
-}
-.popUpDiv td:first-of-type{
-    width: 100px;
-}
-.popUpDiv td:last-of-type{
-    width: 50px;
-}
-.restoreBtn{
-    width: 30px;
-    height: 30px;
-    background-color: none;
-    background-image:url("assets/images/restoreIcon.png");
-    background-position: 0px 0px;
-    margin: 0 auto;
-}
-.restoreBtn:hover{
-    background-position: 0px 30px;
-    cursor: pointer;
-}
-.emptyBinBtn{
-    background-color: #d60b0b;
-    margin: 0px 0 30px 0;
-}
-#recycleBinIsEmpty{
-    font-size: 26px;
-}
 /* ========================= Footer ========================== */
 footer{
     position: fixed;
@@ -373,7 +410,6 @@ footer{
     height: 5000px;
     overflow: hidden;
     background-color: #000000cc;
-    /* background-color: var(--main); */
     opacity: .8;
     z-index: 4990;
 }
