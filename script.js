@@ -16,7 +16,6 @@ const allNotesContainer = document.getElementById("notesContainer");
 const recycleContainer = document.getElementById("recycleContainer");
 const blackScreen = document.getElementById("blackScreen");
 
-// let recycleList = document.getElementById("recycleList");
 let cssVariables = document.querySelector(':root');
 
 onLoadPage()
@@ -33,7 +32,13 @@ function onLoadPage(){
 
     cssVariables.style.setProperty('--main', settingsObj.background);
     document.getElementById("colorInput").value = settingsObj.background;
-    
+
+    if(settingsObj.sortByDueDate){
+        sortIcon.style.backgroundImage = "url(assets/images/sortDue_icon.png)";
+    }else{
+        sortIcon.style.backgroundImage = "url(assets/images/sort_icon.png)";
+    }
+
     displayNotes();
     displayRecycleList();
 }
@@ -160,6 +165,9 @@ function restoreNote(noteID){
     saveToLocalStorage();
     displayNotes();
     displayRecycleList();
+    if(recycleArr.length === 0){
+        closePopUp("popUpDivBin");
+    }
 }
 function emptyBin(){
     recycleArr.splice(0, recycleArr.length);

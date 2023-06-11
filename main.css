@@ -36,9 +36,8 @@ h3{
     border: solid 2px white;
     color: white;
 }
-.button:hover{
-    cursor: pointer;
-}
+.button:hover{ cursor: pointer; }
+
 .popUpDiv{
     box-sizing: border-box;
     position: fixed;
@@ -71,7 +70,7 @@ h3{
     background-color: #434c57;
     cursor: pointer;
 }
-/* =========================== Main Container =========================== */
+
 .mainContainer{
     box-sizing: border-box;
     width: 100%;
@@ -90,9 +89,7 @@ h3{
     border-radius: 10px;
     border: solid 2px #ffffffa8;
 }
-::-webkit-scrollbar-thumb:hover {
-    background: var(--lightBlue); 
-}
+::-webkit-scrollbar-thumb:hover { background: var(--lightBlue); }
 
 /* =========================== Header =========================== */
 header{
@@ -129,7 +126,6 @@ header{
     color: white;
     font-size: 28px;
     padding: 8px 30px 8px 55px;
-    /* margin: 15px; */
     border-radius: 30px;
     border: solid 2px white;
     background-color: var(--lightBlue);
@@ -138,7 +134,7 @@ header{
     background-repeat: no-repeat;
     filter: drop-shadow(0px 5px 5px #000000);
     left: 50%;
-    transform: translate(-117px, 55%);
+    transform: translate(-97px, 55%);
     z-index: 100;
 }
 .addNote_Btn:hover{
@@ -170,20 +166,16 @@ form input{
 }
 form input[type=date]{ margin-right: 30px; }
 form input[type=time]{ width: 100px; }
-
-
-
 form button[type=submit]{ color: white; background-color: var(--lightBlue);}
 form button[type=reset]{ color: white; background-color: #2d353e;}
-
 form button[type=submit]:hover{ background-color: var(--darkBlue);}
 form button[type=reset]:hover{ background-color: #434c57;}
 
 
 /* ========================= Recycle PopUp ========================== */
-.popUpDiv table{
-    width: 100%;
-}
+
+.popUpDiv table{ width: 100%; }
+
 .popUpDiv th{
     text-align: left;
     font-size: 22px;
@@ -194,12 +186,9 @@ form button[type=reset]:hover{ background-color: #434c57;}
     padding-top: 10px;
     border-top: solid 1PX #ffffff2c;
 }
-.popUpDiv td:first-of-type{
-    width: 100px;
-}
-.popUpDiv td:last-of-type{
-    width: 50px;
-}
+.popUpDiv td:first-of-type{ width: 100px;}
+.popUpDiv td:last-of-type{ width: 50px;}
+
 .restoreBtn{
     width: 30px;
     height: 30px;
@@ -216,15 +205,12 @@ form button[type=reset]:hover{ background-color: #434c57;}
     background-color: #d60b0b;
     margin: 0px 0 30px 0;
 }
-#recycleBinIsEmpty{
-    font-size: 26px;
-}
+#recycleBinIsEmpty{ font-size: 26px;}
 
 /* ========================= Welcome PopUp ========================== */
-.welcome p{
-    font-size: 18px;
 
-}
+.welcome p{ font-size: 18px; }
+
 .welcome h2{
     font-weight: lighter;
     font-size: 46px;
@@ -236,18 +222,17 @@ form button[type=reset]:hover{ background-color: #434c57;}
     color: white;
     font-weight: lighter;
 }
-.welcomeBtn{
-    background-color: green;
-}
-.welcomeBtn:hover{
-    background-color: rgb(49, 182, 49);
-}
+
+.welcomeBtn{ background-color: green; }
+.welcomeBtn:hover{ background-color: #31b631;}
+
 .welcome li{
-    font-size: 22xp;
+    font-size: 18px;
     line-height: 24px;
 }
 
 /* =========================== Notes =========================== */
+
 .notesContainer{
     padding: 140px 60px 0 140px;
     display: flex;
@@ -276,9 +261,8 @@ form button[type=reset]:hover{ background-color: #434c57;}
     padding: 5px 8px;
     border-radius: 5px;
 }
-.deleteNoteBtn:hover{
-    background-color: #f7bcbc;
-}
+.deleteNoteBtn:hover{ background-color: #f7bcbc; }
+
 .noteItem:hover .deleteNoteBtn{
     cursor: pointer;
     display: inline;
@@ -306,16 +290,15 @@ form button[type=reset]:hover{ background-color: #434c57;}
     bottom: 55px;
     left:14px;
 }
-.noteDateAndTime{
-    padding-left: 10px;
-}
+
+.dateAlert, .dateAlert span:nth-child(2){ color: red; }
+.noteDateAndTime{ padding-left: 10px; }
+
 .noteDateAndTime span:nth-child(2){
     margin-left: 20px;
     color: var(--darkBlue);
 }
-.dateAlert, .dateAlert span:nth-child(2){
-    color: red;
-}
+
 /* --- scroll bar --- */
 .noteContent::-webkit-scrollbar{
     width: 10px;
@@ -348,9 +331,8 @@ form button[type=reset]:hover{ background-color: #434c57;}
     height: 50px;
     margin: 32px auto;
 }
-.tools div:hover {
-    cursor: pointer;
-}
+.tools div:hover { cursor: pointer; }
+
 .tools div .tooltip {
     visibility: hidden;
     width: 160px; 
@@ -370,7 +352,6 @@ form button[type=reset]:hover{ background-color: #434c57;}
     visibility: visible;
     opacity: 0;
 }
-
 #colorIcon{ 
     background-image: url("assets/images/palette_icon.png");
     background-position:  0px 0px; 
@@ -389,11 +370,10 @@ form button[type=reset]:hover{ background-color: #434c57;}
     height: 50px;
     position: absolute;
 }
-#colorIcon input[type=color]:hover{
-    cursor: pointer;
-}
+#colorIcon input[type=color]:hover{ cursor: pointer; }
 
 /* ========================= Footer ========================== */
+
 footer{
     position: fixed;
     bottom: 0;
@@ -413,3 +393,48 @@ footer{
     opacity: .8;
     z-index: 4990;
 }
+
+/* ======================================================================== */
+/* ==================== @media (max-width: 630px) ========================= */
+
+@media only screen and (max-width: 630px) {
+    .popUpDiv {
+        min-width: 370px;
+        padding: 30px 20px;
+        transform: translate(-50%, -50%);
+        max-height: 80%;
+    }
+    .welcome h3 { font-size: 20px; }
+    
+    .title_mainColor, .title_witeLine, .title_blueLine, .title_backOffset {
+        font-size: 50px;
+        margin-top: 20px;
+        left: 50%;
+        transform: translate(-50%, -40%);
+        width: 100%;
+    }
+    .noteItem{ margin: 10px; }
+
+    .addNote_Btn {
+        font-size: 22px;
+        transform: translate(-97px, 15%);
+    }
+    .tools {
+        display: flex;
+        height: 100px;
+        left: 0;
+        top:95%;
+        box-sizing: border-box;
+        width: calc(100% + 2px);
+        margin-left: -1px;
+    }
+    .tools > div{ margin-top: 0px; }
+    .notesContainer { padding: 80px 5px 0 5px; }
+    .deleteNoteBtn { display: inline; }
+    .tooltip{ display: none; }
+
+    footer {
+        border:none;
+        height: 20px;
+    }
+  }
